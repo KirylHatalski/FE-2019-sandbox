@@ -5,9 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
     "mode": "development",
-    "entry": {
-      main: "./src/js/index.js"
-    },
+    "entry": ["./src/js/index.js", "./src/styles/main.scss"],
     "output": {
         "path": __dirname + '/dist',
         "filename": "[name].js"
@@ -38,16 +36,15 @@ const config = {
     },
     plugins: [
       new MiniCssExtractPlugin({
-          filename: "dist/[name].css",
+          filename: "[name].css",
       }),
       new HtmlWebpackPlugin({
-        filename: 'index.html'
+        template: './src/index.html'
       })
     ],
     devServer: {
       contentBase: path.join(__dirname, 'dist'),
-      compress: true,
-      port: 8080
+      compress: true
     }
 }
 
